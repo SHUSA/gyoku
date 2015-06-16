@@ -40,8 +40,6 @@ module Gyoku
 
       order(hash_without_attributes).each do |key| 
         node_attr = attributes[key] || {}
-        # node_attr must be kind of ActiveSupport::HashWithIndifferentAccess
-        node_attr = ::Hash[node_attr.map { |k,v| [k.to_s, v] }]
         node_value = hash[key].respond_to?(:keys) ? hash[key].clone : hash[key]
 
         if node_value.respond_to?(:keys)
